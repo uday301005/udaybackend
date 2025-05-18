@@ -20,8 +20,8 @@ const Reservation = () => {
         console.log("Form submitted with data:", { firstName, lastName, email, date, time, phone });
         
         try {
-            console.log("Making API request to:", 'http://localhost:4000/api/v1/reservation/send');
-            const { data } = await axios.post('http://localhost:4000/api/v1/reservation/send',
+            console.log("Making API request to:", 'https://masterchef-r24v.onrender.com/api/v1/reservation/send');
+            const { data } = await axios.post('https://masterchef-r24v.onrender.com/api/v1/reservation/send',
               
             {firstName, lastName, email, date, time, phone},
             {
