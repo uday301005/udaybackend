@@ -9,9 +9,14 @@ dotenv.config({ path: "./config/config.env" });
 
 const app = express();
 
-// Enable CORS for all origins during development
+const allowedOrigins = [
+    process.env.FRONTEND_URL,
+    "http://localhost:5174",
+    "http://127.0.0.1:5174"
+];
+
 app.use(cors({
-    origin: ["http://localhost:5174", "http://127.0.0.1:5174"],
+    origin: allowedOrigins,
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
 }));
@@ -23,7 +28,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/v1/reservation', reservationRoute);
 
 // Test route to verify server is working
-app.get('/test', (req, res) => {
+app.get('/', (req, res) => {
     res.json({ message: 'Server is working' });
 });
 
